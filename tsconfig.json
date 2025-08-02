@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+        "sourceMap": true,
+        "target": "es6",
+        "allowJs": true,
+        "moduleResolution": "node"
+    },
+    "include": [
+        "src/frontend/*"
+    ]
+}

@@ -6,9 +6,6 @@ module.exports = {
   devtool: 'inline-source-map',
   mode: 'production',
   watch: false,
-  externals: {
-    'bootstrap': 'bootstrap',
-  },
   module: {
     rules: [
       {
@@ -16,13 +13,17 @@ module.exports = {
         use: 'ts-loader',
         exclude: /node_modules/,
       },
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
+      }
     ],
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
   },
   output: {
-    filename: 'livetime.js',
+    filename: 'good_food.js',
     path: path.resolve(__dirname, 'public'),
     libraryTarget: 'var',
     library: 'app'

@@ -1,11 +1,12 @@
 {
     "compilerOptions": {
+        "module": "esnext",
         "sourceMap": true,
-        "target": "es6",
+        "target": "esnext",
         "allowJs": true,
-        "moduleResolution": "node"
+        "moduleResolution": "bundler"
     },
     "include": [
-        "src/frontend/*"
+        "src/frontend/**/*"
     ]
 }

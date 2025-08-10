@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/png" href="assets/favicon.png">
 
     <title>xample</title>
 </head>
@@ -11,97 +12,106 @@
 <body>
 
 
-    <!-- Swu food Start -->
-    <div class="row">
-        <div class="col-sm-1"></div>
-        <div class="col-sm-10">
+   <!-- Swu Post Start -->
+<div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10">
 
-            <div class="card">
-                <div class="card-header">
-                    <span class="card-title">
-                        <a href="#swu_food_collapse_card" data-bs-toggle="collapse" aria-expanded="true" aria-controls="swu_food_collapse_card" class="text-decoration-none">
-                            <h3 class="mb-0"><i class="far fa-star"></i> food <i class="fas fa-caret-down"></i> </h3>
-                        </a>
-                        <div style="margin-top: -10px;"><i> Here you can edit your food </i></div>
-                    </span>
-                </div>
+        <div class="card">
+            <div class="card-header">
+                <span class="card-title">
+                    <a href="#swu_post_collapse_card" data-bs-toggle="collapse" aria-expanded="true" aria-controls="swu_post_collapse_card" class="text-decoration-none">
+                        <h3 class="mb-0"><i class="far fa-star"></i> Post <i class="fas fa-caret-down"></i> </h3>
+                    </a>
+                    <div style="margin-top: -10px;"><i> Here you can edit your post </i></div>
+                </span>
+            </div>
 
-                <div class="collapse show" id="swu_food_collapse_card">
-                    <div class="card-body">
+            <div class="collapse show" id="swu_post_collapse_card">
+                <div class="card-body">
 
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="input-group">
-                                    <span class="input-group-text" id="swu_food_search_addon"><i class="fas fa-filter"></i>&nbsp;Filtern:</span>
-                                    <input type="text" class="form-control" placeholder="Name, Adresse, Account, Id...." aria-describedby="swu_food_search_addon" id="swu_food_filter_input">
-                                    <button class="btn btn-outline-secondary" type="button" title="Clear filter" id="swu_food_filter_clear_button"><i class="fas fa-times"></i></button>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <button type="button" class="btn btn-info float-end" id="swu_food_create_button">
-                                    <i class="fas fa-plus"></i>&nbsp; Create food
-                                </button>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <span class="input-group-text" id="swu_post_search_addon"><i class="fas fa-filter"></i>&nbsp;Filtern:</span>
+                                <input type="text" class="form-control" placeholder="Name, Adresse, Account, Id...." aria-describedby="swu_post_search_addon" id="swu_post_filter_input">
+                                <button class="btn btn-outline-secondary" type="button" title="Clear filter" id="swu_post_filter_clear_button"><i class="fas fa-times"></i></button>
                             </div>
                         </div>
-                        <br>
-                        <div id="swu_food_table"></div>
+                        <div class="col-md-6">
+                            <button type="button" class="btn btn-info float-end" id="swu_post_create_button">
+                                <i class="fas fa-plus"></i>&nbsp; Create Post
+                            </button>
+                        </div>
                     </div>
+                    <br>
+                    <div id="swu_post_table"></div>
                 </div>
             </div>
         </div>
-        <div class="col-sm-1"></div>
     </div>
-    <br>
+    <div class="col-sm-1"></div>
+</div>
+<br>
 
-    <!--Swu food Modal Start-->
-    <div aria-hidden="true" role="dialog" tabindex="-1" id="swu_food_modal" class="modal fade">
-        <div class="modal-dialog" style="min-width: 70%;">
-            <div class="modal-content">
-                <form id="swu_food_modal_form">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Edit food</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+<!--Swu Post Modal Start-->
+<div aria-hidden="true" role="dialog" tabindex="-1" id="swu_post_modal" class="modal fade">
+    <div class="modal-dialog" style="min-width: 70%;">
+        <div class="modal-content">
+            <form id="swu_post_modal_form">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit Post</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    
+                    
+                <div class="row">
+                    <div class="col-md">
+                    <div class="mb-3">
+                        <label class="form-label">title</label>
+                        <input class="form-control" type="text" id="swu_post_modal_form_title" required>
                     </div>
-                    <div class="modal-body">
-
-
-
-                        <div class="row">
-                            <div class="col-md">
-                                <div class="mb-3">
-                                    <label class="form-label">name</label>
-                                    <input class="form-control" type="text" id="swu_food_modal_form_name" required>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md">
-                                <div class="mb-3">
-                                    <label class="form-label">cost</label>
-                                    <input class="form-control" type="text" id="swu_food_modal_form_cost" required>
-                                </div>
-                            </div>
-                        </div>
-
-
-
                     </div>
-
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                            <i class="fas fa-times"></i> Cancel
-                        </button>
-                        <button type="submit" class="btn btn-success">
-                            <i class="far fa-save"></i> Save food
-                        </button>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md">
+                    <div class="mb-3">
+                        <label class="form-label">body</label>
+                        <input class="form-control" type="text" id="swu_post_modal_form_body" required>
                     </div>
-                </form>
-            </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md">
+                    <div class="mb-3">
+                        <label class="form-label">userId</label>
+                        <input class="form-control" type="text" id="swu_post_modal_form_userId" required>
+                    </div>
+                    </div>
+                </div>
+                
+
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        <i class="fas fa-times"></i> Cancel
+                    </button>
+                    <button type="submit" class="btn btn-success">
+                        <i class="far fa-save"></i> Save Post
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
-    <!-- Swu food Modal End -->
-    <!-- Swu food End -->
+</div>
+<!-- Swu Post Modal End -->
+<!-- Swu Post End -->
 </body>
 
 <script src="good_food.js"></script>

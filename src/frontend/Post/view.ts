@@ -20,10 +20,10 @@ export default class PostView {
 
 
         let tableColumns = [
-            { title: "Id", field: "id"},
-                { title: "title", field: "title"},
-    { title: "body", field: "body"},
-    { title: "userId", field: "userId"},
+            { title: "Id", field: "id" },
+            { title: "title", field: "title", headerFilter: "input" },
+            { title: "body", field: "body", headerFilter:"input" },
+            { title: "userId", field: "userId", headerFilter:"input" },
 
         ]
         //TODO: Make table filter fit with tabulator lib
@@ -81,17 +81,17 @@ export default class PostView {
      * Sets form data 
      */
     setModalFormData(postData: Post) {
-            SwuDom.querySelectorAsInput("#swu_post_modal_form_title").value = postData.title;
-    SwuDom.querySelectorAsInput("#swu_post_modal_form_body").value = postData.body;
-    SwuDom.querySelectorAsInput("#swu_post_modal_form_userId").value = postData.userId;
+        SwuDom.querySelectorAsInput("#swu_post_modal_form_title").value = postData.title;
+        SwuDom.querySelectorAsInput("#swu_post_modal_form_body").value = postData.body;
+        SwuDom.querySelectorAsInput("#swu_post_modal_form_userId").value = postData.userId;
 
     }
 
     getModalFormData(): Post {
         let postData = {} as Post;
-            postData.title = SwuDom.querySelectorAsInput("#swu_post_modal_form_title").value;
-    postData.body = SwuDom.querySelectorAsInput("#swu_post_modal_form_body").value;
-    postData.userId = SwuDom.querySelectorAsInput("#swu_post_modal_form_userId").value;
+        postData.title = SwuDom.querySelectorAsInput("#swu_post_modal_form_title").value;
+        postData.body = SwuDom.querySelectorAsInput("#swu_post_modal_form_body").value;
+        postData.userId = SwuDom.querySelectorAsInput("#swu_post_modal_form_userId").value;
 
         return postData;
     }

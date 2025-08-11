@@ -1,5 +1,6 @@
 const path = require('path');
 const Dotenv = require('dotenv-webpack');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   entry: './src/frontend/index.ts',
@@ -32,6 +33,9 @@ module.exports = {
     minimize: false
   },
   plugins: [
-    new Dotenv()
+    new Dotenv(),
+    new HtmlWebpackPlugin({
+      template: "./src/frontend/index.html", // your HTML template
+    }),
   ]
 };

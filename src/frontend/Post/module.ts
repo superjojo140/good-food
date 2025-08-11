@@ -22,7 +22,6 @@ export default class PostModule {
     }
 }
 
-await PostModule.init();
 
 
 

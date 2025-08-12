@@ -1,10 +1,10 @@
-module.exports.notFoundRoute = function (req, res, next) {
+export function notFoundRoute(req, res, next) {
     const error = new Error("Not found");
-    error.status = 404;
+    (error as any).status = 404;
     next(error);
 }
 
-module.exports.errorHandler = function (error, req, res, next) {
+export function errorHandler(error, req, res, next) {
     res.status(error.status || 500);
     res.json({
         error: {

@@ -1,6 +1,7 @@
-jwt = require('jsonwebtoken');
+import jwt from 'jsonwebtoken';
 
-module.exports = (req, res, next) => {
+
+const authMiddleware = (req, res, next) => {
     try {
         let token = "invalid";
 
@@ -9,7 +10,7 @@ module.exports = (req, res, next) => {
             token = req.headers.authorization.split(" ")[1];
         }
 
-        const decoded = jwt.verify(token, process.env.JWT_KEY); //Verify Token
+        const decoded = jwt.verify(token, process.env.JWT_KEY as string); //Verify Token
         req.userData = decoded; //Set decoded and verified user data in req object
         next(); //Call next handler
 
@@ -17,3 +18,5 @@ module.exports = (req, res, next) => {
         return res.status(401).json({ message: 'Auth failed' });
     }
 };
+
+export default authMiddleware;

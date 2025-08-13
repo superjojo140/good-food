@@ -2,6 +2,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
-import PostModule from "./Post/module";
+import ProjectModule from "./Project/module";
 
-PostModule.init();
+ProjectModule.init();

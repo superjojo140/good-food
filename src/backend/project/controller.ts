@@ -1,5 +1,5 @@
 import express from "express";
-import * as projectService from "./service.js";
+import * as projectService from "./service";
 
 const router = express.Router();
 //Register own routes
@@ -34,7 +34,7 @@ async function createProject(req, res, next) {
         const notes = req.body.notes;
 
         const projectId = await projectService.createProject(title, description, notes);
-        res.status(201).json({ projectId: projectId });
+        res.status(201).json({ status: "success", message: "Created project successfully", projectId: projectId });
     }
     catch (e) { next(e); }
 }
@@ -47,7 +47,7 @@ async function updateProject(req, res, next) {
         const projectId = req.params.projectId;
 
         await projectService.updateProject(projectId, title, description, notes);
-        res.status(204).send();
+        res.status(204).json({ status: "success", message: "Updated project successfully" });
     }
     catch (e) { next(e); }
 }
@@ -57,7 +57,7 @@ async function deleteProject(req, res, next) {
         const projectId = req.params.projectId;
 
         await projectService.deleteProject(projectId);
-        res.status(204).send();
+        res.status(204).json({ status: "success", message: "Deleted project successfully" });
     }
     catch (e) { next(e); }
 }

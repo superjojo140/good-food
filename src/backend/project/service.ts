@@ -1,5 +1,5 @@
 import { ResultSetHeader, RowDataPacket } from 'mysql2/promise';
-import * as dbService from './../database/service.js';
+import * as dbService from './../database/service';
 
 
 export async function getProject(projectId: string) {

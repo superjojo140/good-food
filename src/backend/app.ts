@@ -1,6 +1,7 @@
 // Import npm modules
 import dotenv from "dotenv";
-dotenv.config();
+import path from "path";
+dotenv.config({ path: path.resolve(__dirname, "../../.env") });
 import express from "express";
 import bodyParser from "body-parser";
 
@@ -14,14 +15,14 @@ import projectController from "./project/controller";
 const app = express();
 
 // Serve static files
-app.use(express.static('public'));
+app.use(express.static('../../public'));
 
 // Middleware
 app.use(bodyParser.json());
-app.use(authMiddleware); // Use Auth middleware for all following API routes
+//app.use(authMiddleware); // Use Auth middleware for all following API routes
 
 // Register routes and controller
-app.use("/projects", projectController);
+app.use("/project", projectController);
 
 // Error handler
 app.use(errorMiddleware.notFoundRoute);

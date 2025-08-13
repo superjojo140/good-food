@@ -9,7 +9,8 @@ export function errorHandler(error, req, res, next) {
     res.json({
         error: {
             message: error.message,
-            status: error.status || 500
+            status: error.status || 500,
+            url: req.url,
         }
     });
 }

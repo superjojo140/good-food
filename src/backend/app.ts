@@ -16,6 +16,7 @@ const app = express();
 
 // Serve static files
 app.use(express.static('../../public'));
+app.use(express.static('../frontend', { extensions: ['html'], index: false }));
 
 // Middleware
 app.use(bodyParser.json());

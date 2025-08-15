@@ -1,8 +1,7 @@
 import { SwuDom, SwuTable } from "swu-core";
-import { Project } from "./model";
+import { Project } from "../../model/model";
 import ProjectModule from "./module";
 import Modal from "bootstrap/js/dist/modal.js";
-import { format } from "mysql2";
 
 export default class ProjectView {
 
@@ -21,15 +20,13 @@ export default class ProjectView {
 
 
         let tableColumns = [
-            { title: "Id", field: "id", formatter: "html" },
-            { title: "title", field: "title", headerFilter: "input" },
-            { title: "description", field: "description", headerFilter: "input" },
-            { title: "notes", field: "notes", headerFilter: "input" },
+            { title: "", field: "swuTableActionButtons", formatter: "html", headerSort: false, headerFilter: false },
+            { title: "Id", field: "id", formatter: "html", sorter: "number", headerFilter: "input" },
+                { title: "title", field: "title", headerFilter:"input"},
+    { title: "description", field: "description", headerFilter:"input"},
+    { title: "notes", field: "notes", headerFilter:"input"},
 
         ]
-        //TODO: Make table filter fit with tabulator lib
-        let searchInput = SwuDom.querySelectorAsInput("#swu_project_filter_input");
-        let searchInputClear = SwuDom.querySelectorAsInput("#swu_project_filter_clear_button");
         this.dataTable = new SwuTable("#swu_project_table", tableColumns);
 
         SwuDom.addEventListener("#swu_project_create_button", "click", ProjectModule.controller.showProjectModalForCreate);
@@ -40,23 +37,23 @@ export default class ProjectView {
 
 
     async updateListView(projectList: Project[]) {
-        let tableDataList: Project[] = [];
+        interface projectTableDataset extends Project { swuTableActionButtons: string };
+        let tableDataList: projectTableDataset[] = [];
 
         for (let projectId in projectList) {
-            let project = projectList[projectId] as Project;
+            let project = projectList[projectId] as projectTableDataset;
             let editBtn = `<button type="button" class="btn btn-primary btn-sm swu-project-edit-btn" data-swu-project-id="${project.id}">
                                 <i class="fas fa-pencil-alt"></i>&nbsp; Edit
                            </button>`;
             let deleteBtn = `&nbsp;<button class="btn btn-danger btn-sm swu-project-delete-btn" type="button" data-swu-project-id="${project.id}">
                                 <i class="far fa-trash-alt"></i> Delete
                              </button>`;
-            project.id = editBtn + deleteBtn + "&nbsp;" + project.id;
+            project.swuTableActionButtons = editBtn + deleteBtn;
             tableDataList.push(project);
         }
 
         this.dataTable.update(tableDataList);
         this.registerListItemButtons();
-        SwuDom.querySelectorAsInput("#swu_project_filter_input").value = "";
     }
 
     registerListItemButtons() {
@@ -84,17 +81,17 @@ export default class ProjectView {
      * Sets form data 
      */
     setModalFormData(projectData: Project) {
-        SwuDom.querySelectorAsInput("#swu_project_modal_form_title").value = projectData.title;
-        SwuDom.querySelectorAsInput("#swu_project_modal_form_description").value = projectData.description;
-        SwuDom.querySelectorAsInput("#swu_project_modal_form_notes").value = projectData.notes;
+            SwuDom.querySelectorAsInput("#swu_project_modal_form_title").value = projectData.title;
+    SwuDom.querySelectorAsInput("#swu_project_modal_form_description").value = projectData.description;
+    SwuDom.querySelectorAsInput("#swu_project_modal_form_notes").value = projectData.notes;
 
     }
 
     getModalFormData(): Project {
         let projectData = {} as Project;
-        projectData.title = SwuDom.querySelectorAsInput("#swu_project_modal_form_title").value;
-        projectData.description = SwuDom.querySelectorAsInput("#swu_project_modal_form_description").value;
-        projectData.notes = SwuDom.querySelectorAsInput("#swu_project_modal_form_notes").value;
+            projectData.title = SwuDom.querySelectorAsInput("#swu_project_modal_form_title").value;
+    projectData.description = SwuDom.querySelectorAsInput("#swu_project_modal_form_description").value;
+    projectData.notes = SwuDom.querySelectorAsInput("#swu_project_modal_form_notes").value;
 
         return projectData;
     }

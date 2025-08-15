@@ -12,7 +12,7 @@ export default class ProjectModule {
     static view: ProjectView;
 
     static async init() {
-        await SwuDom.loadHtml("markup.html");
+        await SwuDom.loadHtml("Project/markup.html");
         ProjectModule.service = new ProjectService();
         ProjectModule.controller = new ProjectController();
         ProjectModule.view = new ProjectView();

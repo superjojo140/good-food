@@ -1,9 +1,7 @@
 import { SwuHttpResponse } from "swu-core";
-import { Project } from "./model";
+import { Project } from "../../model/model";
 
 export default class ProjectService {
-
-    //TODO: Use more than GET and POST (update SWUFetch)
 
     async getAllProject() {
         const resp = await fetch("project");

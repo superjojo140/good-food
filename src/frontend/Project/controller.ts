@@ -46,9 +46,9 @@ export default class ProjectController {
 
     async handleProjectDelete(projectId: string) {
         try {
-            let confirmResp = await SwuAlert.deleteConfirm("Nutzeraccount löschen", "Soll der Nutzeraccount wirklich gelöscht werden?");
+            let confirmResp = await SwuAlert.deleteConfirm("Delete Project", "Do you really want to delete this Project?");
             let resp = await ProjectModule.service.deleteProject(projectId);
-            SwuAlert.alertResp(resp, "Nutzeraccount Löschen");
+            SwuAlert.alertResp(resp, "Delete Project");
             await this.refreshProjectList();
         } catch (error) {
             SwuAlert.alertError(error);

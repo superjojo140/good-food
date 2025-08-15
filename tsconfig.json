@@ -7,6 +7,6 @@
         "moduleResolution": "bundler"
     },
     "include": [
-        "src/frontend/**/*"
+        "src/frontend/**/*",
     ]
 }

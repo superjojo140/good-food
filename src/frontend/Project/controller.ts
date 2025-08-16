@@ -24,7 +24,7 @@ export default class ProjectController {
             let projectData = ProjectModule.view.getModalFormData();
             projectData.id = projectId;
             const resp = await ProjectModule.service.updateProject(projectData);
-            SwuAlert.alertResp(resp, "Saving Project");
+            SwuAlert.alertResp(resp, "Saving P1");
             ProjectModule.view.modal.hide(); //refresh project list via hide event
         } catch (error) {
             SwuAlert.alertError(error);
@@ -36,7 +36,7 @@ export default class ProjectController {
         try {
             let projectData = ProjectModule.view.getModalFormData();
             const resp = await ProjectModule.service.createProject(projectData);
-            SwuAlert.alertResp(resp, "Create Project");
+            SwuAlert.alertResp(resp, "Create P1");
             ProjectModule.view.modal.hide(); //refresh project list via hide event
         } catch (error) {
             SwuAlert.alertError(error);
@@ -46,9 +46,9 @@ export default class ProjectController {
 
     async handleProjectDelete(projectId: string) {
         try {
-            let confirmResp = await SwuAlert.deleteConfirm("Delete Project", "Do you really want to delete this Project?");
+            let confirmResp = await SwuAlert.deleteConfirm("Delete P1", "Do you really want to delete this P1?");
             let resp = await ProjectModule.service.deleteProject(projectId);
-            SwuAlert.alertResp(resp, "Delete Project");
+            SwuAlert.alertResp(resp, "Delete P1");
             await this.refreshProjectList();
         } catch (error) {
             SwuAlert.alertError(error);

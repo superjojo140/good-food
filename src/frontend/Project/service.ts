@@ -1,5 +1,5 @@
 import { SwuHttpResponse } from "swu-core";
-import { Project } from "../../model/model";
+import { Project } from "../../model/Project/model";
 
 export default class ProjectService {
 

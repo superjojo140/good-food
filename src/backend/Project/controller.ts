@@ -3,17 +3,17 @@ import * as projectService from "./service";
 
 const router = express.Router();
 //Register own routes
-router.get("/", getAllProjects);
+router.get("/", getProjectList);
 router.get("/:projectId", getProject);
 router.post("/", createProject);
 router.put("/:projectId", updateProject);
 router.delete("/:projectId", deleteProject);
 export default router;
 
-async function getAllProjects(req: ExpressRequest, res: ExpressResponse, next: NextFunction) {
+async function getProjectList(req: ExpressRequest, res: ExpressResponse, next: NextFunction) {
     try {
-        let projects = await projectService.getAllProjects();
-        res.status(200).json(projects);
+        let projectList = await projectService.getProjectList();
+        res.status(200).json(projectList);
     }
     catch (e) { next(e); }
 }

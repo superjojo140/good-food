@@ -8,7 +8,7 @@ import bodyParser from "body-parser";
 // Import own modules
 import authMiddleware from "./auth/middleware";
 import * as errorMiddleware from "./error/middleware";
-import projectController from "./project/controller";
+import ProjectController from "./Project/controller";
 
 // Init app
 
@@ -23,7 +23,7 @@ app.use(bodyParser.json());
 //app.use(authMiddleware); // Use Auth middleware for all following API routes
 
 // Register routes and controller
-app.use("/project", projectController);
+app.use("/project", ProjectController);
 
 // Error handler
 app.use(errorMiddleware.notFoundRoute);

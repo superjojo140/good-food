@@ -6,8 +6,8 @@
   "scripts": {
     "start": "node src/backend/app.js",
     "build": "webpack",
-    "webpack-watch": "webpack --watch",
-    "nodemon": "nodemon src/backend/app.js"
+    "build-dev": "webpack --watch",
+    "nodemon": "cd src/backend && nodemon --exec ts-node app.ts"
   },
   "repository": {
     "type": "git",

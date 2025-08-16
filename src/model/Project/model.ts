@@ -1,8 +1,8 @@
 
 export interface Project {
     id: string,
-        title: string;
+        notes: string;
     description: string;
-    notes: string;
+    title: string;
 
 }

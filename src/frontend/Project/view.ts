@@ -22,9 +22,9 @@ export default class ProjectView {
         let tableColumns = [
             { title: "", field: "swuTableActionButtons", formatter: "html", headerSort: false, headerFilter: false },
             { title: "Id", field: "id", formatter: "html", sorter: "number", headerFilter: "input" },
-                { title: "notes", field: "notes", headerFilter:"input"},
+                { title: "title", field: "title", headerFilter:"input"},
+    { title: "notes", field: "notes", headerFilter:"input"},
     { title: "description", field: "description", headerFilter:"input"},
-    { title: "title", field: "title", headerFilter:"input"},
 
         ]
         this.dataTable = new SwuTable("#swu_project_table", tableColumns);
@@ -81,17 +81,17 @@ export default class ProjectView {
      * Sets form data 
      */
     setModalFormData(projectData: Project) {
-            SwuDom.querySelectorAsInput("#swu_project_modal_form_notes").value = projectData.notes;
+            SwuDom.querySelectorAsInput("#swu_project_modal_form_title").value = projectData.title;
+    SwuDom.querySelectorAsInput("#swu_project_modal_form_notes").value = projectData.notes;
     SwuDom.querySelectorAsInput("#swu_project_modal_form_description").value = projectData.description;
-    SwuDom.querySelectorAsInput("#swu_project_modal_form_title").value = projectData.title;
 
     }
 
     getModalFormData(): Project {
         let projectData = {} as Project;
-            projectData.notes = SwuDom.querySelectorAsInput("#swu_project_modal_form_notes").value;
+            projectData.title = SwuDom.querySelectorAsInput("#swu_project_modal_form_title").value;
+    projectData.notes = SwuDom.querySelectorAsInput("#swu_project_modal_form_notes").value;
     projectData.description = SwuDom.querySelectorAsInput("#swu_project_modal_form_description").value;
-    projectData.title = SwuDom.querySelectorAsInput("#swu_project_modal_form_title").value;
 
         return projectData;
     }

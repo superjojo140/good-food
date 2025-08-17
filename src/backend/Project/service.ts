@@ -16,17 +16,15 @@ export async function getProjectList() {
 }
 
 export async function createProject(title: string, description: string, notes: string) {
-    const queryCmd = `INSERT INTO project (title, description, notes) VALUES (?, ?, ?)`;
+    //TODO: dynamic properties
+    const queryCmd = `INSERT INTO project (title, notes, description) VALUES (?, ?, ?)`;
     const [result] = await dbService.query<ResultSetHeader>(queryCmd, [title, description, notes]);
     return result.insertId;
 }
 
 export async function updateProject(projectId: string, title: string, description: string, notes: string) {
-    const queryCmd = `
-        UPDATE project 
-        SET title = ?, description = ?, notes = ? 
-        WHERE id = ?
-    `;
+     //TODO: dynamic properties
+    const queryCmd = `UPDATE project SET title = ?, notes = ?, description = ? WHERE id = ?`;
     await dbService.query<ResultSetHeader>(queryCmd, [title, description, notes, projectId]);
 }
 
